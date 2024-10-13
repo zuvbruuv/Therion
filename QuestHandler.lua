@@ -1,5 +1,5 @@
 return {
-    ["Fortune Teller Quest"] = function()
-        print("Completed! 1")
+    ['None Available'] = function()
+        ---
     end
 }
