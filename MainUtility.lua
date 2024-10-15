@@ -9,7 +9,7 @@ local ClosureBindings = {
 			local TweenService = game:GetService("TweenService")
 			local Camera = game:GetService("Workspace").CurrentCamera
 			local Mouse = LocalPlayer:GetMouse()
-			local UIVersion = loadstring(game:HttpGet('https://raw.githubusercontent.com/zuvbruuv/Therion/main/Version.lua', true))() or "v1.0.0"
+			local UIVersion = (loadstring(game:HttpGet('https://raw.githubusercontent.com/zuvbruuv/Therion/main/Version.lua', true))() or {Version = "v1.0.0"}).Version
 			local Root = script
 			local Creator = require(Root.Creator)
 			local ElementsTable = require(Root.Elements)
