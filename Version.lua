@@ -1,4 +1,4 @@
 return {
     Version = 'v1.1-beta.0',
-    LastUpdated = '10/15/2024'
+    LastUpdate = '10/15/2024'
 }
