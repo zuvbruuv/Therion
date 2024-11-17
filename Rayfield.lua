@@ -278,14 +278,16 @@ local function FadeDescription(Infos,type,Out:boolean?)
 			InfoPrompt.Status.Text = Infos.Color.R..Infos.Color.G..Infos.Color.B
 		end
 
-		if not Infos.Info.Image then
-			InfoPrompt.ImageLabel.Visible = false
-			InfoPrompt.Description.Position = InfoPrompt.ImageLabel.Position
-		else
-			InfoPrompt.ImageLabel.Visible = true
-			InfoPrompt.ImageLabel.Image = 'rbxassetid://'..Infos.Info.Image
-			InfoPrompt.Description.Position = UDim2.new(.5,0,0,160)
-		end
+        pcall(function()
+            if not Infos.Info.Image then
+                InfoPrompt.ImageLabel.Visible = false
+                InfoPrompt.Description.Position = InfoPrompt.ImageLabel.Position
+            else
+                InfoPrompt.ImageLabel.Visible = true
+                InfoPrompt.ImageLabel.Image = 'rbxassetid://'..Infos.Info.Image
+                InfoPrompt.Description.Position = UDim2.new(.5,0,0,160)
+            end
+        end)
 
 		InfoPrompt.Title.Text = Infos.Info.Title
 		InfoPrompt.Description.Text = Infos.Info.Description
