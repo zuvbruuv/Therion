@@ -6663,7 +6663,7 @@ local ClosureBindings = {
             Color3.fromRGB(20, 25, 30),
             Color3.fromRGB(10, 15, 20)
         ),
-        AcrylicNoise = 0.90,
+        AcrylicNoise = 0.75,
 
         TitleBarLine = Color3.fromRGB(40, 50, 60),
         Tab = Color3.fromRGB(51, 59, 68),
