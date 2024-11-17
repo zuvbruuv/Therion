@@ -6360,6 +6360,7 @@ local ClosureBindings = {
 			Names = {
 				"Dark",
 				"Darker",
+                "Dark Blue",
 				"Light",
 				"Aqua",
 				"Amethyst",
@@ -6652,7 +6653,7 @@ local ClosureBindings = {
 			}
 
 		end)() end,
-    [55] = function()local wax,script,require=ImportGlobals(52)local ImportGlobals return (function(...)return {
+    [55] = function()local wax,script,require=ImportGlobals(55)local ImportGlobals return (function(...)return {
         Name = "Dark Blue",
         Accent = Color3.fromRGB(25, 120, 200),
 
@@ -6686,7 +6687,7 @@ local ClosureBindings = {
         DialogInputLine = Color3.fromRGB(100, 120, 140),
 			}
 
-		end)() end,
+		end)() end
 } -- [RefId] = Closure
 
 -- Holds the actual DOM data
