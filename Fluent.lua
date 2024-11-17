@@ -6666,14 +6666,14 @@ local ClosureBindings = {
         AcrylicNoise = 0.90,
 
         TitleBarLine = Color3.fromRGB(40, 50, 60),
-        Tab = Color3.fromRGB(30, 35, 40),
+        Tab = Color3.fromRGB(51, 59, 68),
 
         Element = Color3.fromRGB(62, 72, 82),
         ElementBorder = Color3.fromRGB(50, 55, 60),
         InElementBorder = Color3.fromRGB(35, 40, 45),
         ElementTransparency = 0.85,
 
-        DropdownFrame = Color3.fromRGB(53, 61, 69),
+        DropdownFrame = Color3.fromRGB(44, 51, 57),
         DropdownHolder = Color3.fromRGB(30, 35, 40),
         DropdownBorder = Color3.fromRGB(50, 55, 60),
 
