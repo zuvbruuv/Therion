@@ -6942,7 +6942,14 @@ local ObjectTree = {
 						{
 							"Amethyst"
 						}
-					}
+					},
+                    {
+                        55,
+                        2,
+                        {
+                            "Darker Blue"
+                        }
+                    }
 				}
 			},
 			{
