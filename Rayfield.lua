@@ -21,6 +21,7 @@ local ConfigurationExtension = ".rfld"
 local RayfieldLibrary = {
 	Flags = {},
 	ToggleBind = Enum.KeyCode.LeftControl,
+	Unloaded = false,
 	Theme = {
 		Default = {
 			TextColor = Color3.fromRGB(240, 240, 240),
@@ -462,6 +463,7 @@ if gethui then
 		if Interface.Name == Rayfield.Name and Interface ~= Rayfield then
 			Interface.Enabled = false
 			Interface.Name = "Rayfield-Old"
+			RayfieldLibrary.Unloaded = true
 		end
 	end
 elseif not useStudio then
@@ -469,6 +471,7 @@ elseif not useStudio then
 		if Interface.Name == Rayfield.Name and Interface ~= Rayfield then
 			Interface.Enabled = false
 			Interface.Name = "Rayfield-Old"
+			RayfieldLibrary.Unloaded = true
 		end
 	end
 end
@@ -2999,6 +3002,7 @@ function RayfieldLibrary:IsVisible(): boolean
 end
 
 function RayfieldLibrary:Destroy()
+	RayfieldLibrary.Unloaded = true
 	Rayfield:Destroy()
 end
 
