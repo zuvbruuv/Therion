@@ -20,6 +20,7 @@ local ConfigurationExtension = ".rfld"
 
 local RayfieldLibrary = {
 	Flags = {},
+	ToggleBind = Enum.KeyCode.LeftControl,
 	Theme = {
 		Default = {
 			TextColor = Color3.fromRGB(240, 240, 240),
@@ -1202,7 +1203,7 @@ function RayfieldLibrary:CreateWindow(Settings)
 	LoadingFrame.Subtitle.Text = Settings.LoadingSubtitle or "Interface Suite"
 
 	if Settings.LoadingTitle ~= "Rayfield Interface Suite" then
-		LoadingFrame.Version.Text = "discord.gg/therion"
+		LoadingFrame.Version.Text = "Rayfield UI"
 	end
 
 	if dragBar then
@@ -2511,7 +2512,7 @@ function RayfieldLibrary:CreateWindow(Settings)
 			UserInputService.InputBegan:Connect(function(input, processed)
 
 				if CheckingForKey then
-					if input.KeyCode ~= Enum.KeyCode.Unknown and input.KeyCode ~= Enum.KeyCode.K then
+					if input.KeyCode ~= Enum.KeyCode.Unknown and input.KeyCode ~= RayfieldLibrary.ToggleBind then
 						local SplitMessage = string.split(tostring(input.KeyCode), ".")
 						local NewKeyNoEnum = SplitMessage[3]
 						Keybind.KeybindFrame.KeybindBox.Text = tostring(NewKeyNoEnum)
@@ -3069,7 +3070,7 @@ Topbar.Hide.MouseButton1Click:Connect(function()
 end)
 
 UserInputService.InputBegan:Connect(function(input, processed)
-	if (input.KeyCode == Enum.KeyCode.K and not processed) then
+	if (input.KeyCode == RayfieldLibrary.ToggleBind and not processed) then
 		if Debounce then return end
 		if Hidden then
 			Hidden = false
