@@ -6673,7 +6673,7 @@ local ClosureBindings = {
         InElementBorder = Color3.fromRGB(35, 40, 45),
         ElementTransparency = 0.85,
 
-        DropdownFrame = Color3.fromRGB(44, 51, 57),
+        DropdownFrame = Color3.fromRGB(67, 77, 86),
         DropdownHolder = Color3.fromRGB(30, 35, 40),
         DropdownBorder = Color3.fromRGB(50, 55, 60),
 
