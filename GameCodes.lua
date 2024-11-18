@@ -1,3 +1,15 @@
 return {
-  [3837114739] = '{\'vampire\'}',
+    [3837114739] = {
+        --[[
+        {
+            Code = '[CODE1]',
+            Reward = '',
+        },
+        {
+            Code = '[CODE2]',
+            Reward = '',
+        },
+        --]]
+        NoCodes = true,
+    },
 }
