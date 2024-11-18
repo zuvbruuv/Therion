@@ -9,6 +9,6 @@ return {
                 Code = 'CODE2'
             },
         },
-        NoCodes = false,
+        NoCodes = true
     },
 }
