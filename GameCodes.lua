@@ -3,12 +3,10 @@ return {
     [3837114739] = {
         Codes = {
             {
-                Code = 'CODE1',
-                Reward = '',
+                Code = 'CODE1'
             },
             {
-                Code = 'CODE2',
-                Reward = '',
+                Code = 'CODE2'
             },
         },
         NoCodes = false,
