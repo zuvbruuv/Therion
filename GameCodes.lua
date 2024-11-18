@@ -2,7 +2,6 @@ return {
     -- // TVL 2
     [3837114739] = {
         Codes = {
-            --[[
             {
                 Code = '[CODE1]',
                 Reward = '',
@@ -11,7 +10,6 @@ return {
                 Code = '[CODE2]',
                 Reward = '',
             },
-            --]]
         },
         NoCodes = true,
     },
