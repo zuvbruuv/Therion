@@ -11,6 +11,6 @@ return {
                 Reward = '',
             },
         },
-        NoCodes = true,
+        NoCodes = false,
     },
 }
