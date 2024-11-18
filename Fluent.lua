@@ -6669,13 +6669,13 @@ local ClosureBindings = {
         Tab = Color3.fromRGB(51, 59, 68),
 
         Element = Color3.fromRGB(62, 72, 82),
-        ElementBorder = Color3.fromRGB(95, 102, 112),
+        ElementBorder = Color3.fromRGB(83, 89, 97),
         InElementBorder = Color3.fromRGB(35, 40, 45),
         ElementTransparency = 0.85,
 
         DropdownFrame = Color3.fromRGB(67, 77, 86),
         DropdownHolder = Color3.fromRGB(30, 35, 40),
-        DropdownBorder = Color3.fromRGB(95, 102, 112),
+        DropdownBorder = Color3.fromRGB(83, 89, 97),
 
         Dialog = Color3.fromRGB(30, 30, 35),
         DialogHolder = Color3.fromRGB(20, 20, 25),
