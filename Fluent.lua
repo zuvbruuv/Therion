@@ -1615,7 +1615,7 @@ local ClosureBindings = {
 						LogoHolder,
 						New("TextLabel", {
 							RichText = true,
-							Text = '   ' .. Config.Title,
+							Text = '  ' .. Config.Title,
 							FontFace = Font.new(
 								"rbxasset://fonts/families/GothamSSm.json",
 								Enum.FontWeight.Regular,
