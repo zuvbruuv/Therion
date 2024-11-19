@@ -1580,7 +1580,7 @@ local ClosureBindings = {
 					BackgroundTransparency = 1,
 					BorderColor3 = Color3.fromRGB(0, 0, 0),
 					BorderSizePixel = 0,
-					Position = UDim2.fromOffset(0, 19),
+					Position = UDim2.fromOffset(0.4, 19),
 					Size = UDim2.fromOffset(20, 23),
 				})
 
@@ -1615,7 +1615,7 @@ local ClosureBindings = {
 						LogoHolder,
 						New("TextLabel", {
 							RichText = true,
-							Text = '  ' .. Config.Title,
+							Text = '   ' .. Config.Title,
 							FontFace = Font.new(
 								"rbxasset://fonts/families/GothamSSm.json",
 								Enum.FontWeight.Regular,
