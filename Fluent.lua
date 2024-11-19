@@ -1573,15 +1573,15 @@ local ClosureBindings = {
 
 				local Logo = New("ImageLabel", {
 					Name = "Icon",
-					Image = "rbxassetid://99647080336479",
+					Image = "http://www.roblox.com/asset/?id=73700936449710",
 					ImageColor3 = Color3.fromRGB(240, 240, 240),
 					AnchorPoint = Vector2.new(0.5, 0.44999998807907104),
 					BackgroundColor3 = Color3.fromRGB(255, 255, 255),
 					BackgroundTransparency = 1,
 					BorderColor3 = Color3.fromRGB(0, 0, 0),
 					BorderSizePixel = 0,
-					Position = UDim2.fromScale(0.5, 0.5),
-					Size = UDim2.fromOffset(32, 32),
+					Position = UDim2.fromScale(0, 19),
+					Size = UDim2.fromOffset(20, 25),
 				})
 
 				local LogoHolder = New("Frame", {
@@ -1615,7 +1615,7 @@ local ClosureBindings = {
 						LogoHolder,
 						New("TextLabel", {
 							RichText = true,
-							Text = Config.Title,
+							Text = '  ' .. Config.Title,
 							FontFace = Font.new(
 								"rbxasset://fonts/families/GothamSSm.json",
 								Enum.FontWeight.Regular,
