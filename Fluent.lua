@@ -1581,7 +1581,7 @@ local ClosureBindings = {
 					BorderColor3 = Color3.fromRGB(0, 0, 0),
 					BorderSizePixel = 0,
 					Position = UDim2.fromScale(0, 19),
-					Size = UDim2.fromOffset(20, 25),
+					Size = UDim2.fromOffset(20, 23),
 				})
 
 				local LogoHolder = New("Frame", {
