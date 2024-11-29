@@ -9,6 +9,7 @@ local ClosureBindings = {
 			local TweenService = game:GetService("TweenService")
 			local Camera = game:GetService("Workspace").CurrentCamera
 			local Mouse = LocalPlayer:GetMouse()
+			local UIVersion = "v1.0.0"
 			local Root = script
 			local Creator = require(Root.Creator)
 			local ElementsTable = require(Root.Elements)
@@ -27,7 +28,7 @@ local ClosureBindings = {
 			NotificationModule:Init(GUI)
 
 			local Library = {
-				Version = "v1.0.0",
+				Version = UIVersion,
 
 				OpenFrames = {},
 				Options = {},
@@ -6957,6 +6958,13 @@ local ObjectTree = {
 							"Light"
 						}
 					},
+                    {
+                        56,
+                        2,
+                        {
+                            "Therion Inspired"
+                        }
+                    },
 					{
 						51,
 						2,
@@ -6982,7 +6990,7 @@ local ObjectTree = {
                         55,
                         2,
                         {
-                            "Darker Blue"
+                            "Dark Blue"
                         }
                     }
 				}
