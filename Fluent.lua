@@ -9,7 +9,6 @@ local ClosureBindings = {
 			local TweenService = game:GetService("TweenService")
 			local Camera = game:GetService("Workspace").CurrentCamera
 			local Mouse = LocalPlayer:GetMouse()
-			local UIVersion = "v1.0.0"
 			local Root = script
 			local Creator = require(Root.Creator)
 			local ElementsTable = require(Root.Elements)
@@ -28,7 +27,7 @@ local ClosureBindings = {
 			NotificationModule:Init(GUI)
 
 			local Library = {
-				Version = UIVersion,
+				Version = "v1.0.0",
 
 				OpenFrames = {},
 				Options = {},
