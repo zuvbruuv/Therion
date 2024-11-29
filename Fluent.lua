@@ -6362,6 +6362,7 @@ local ClosureBindings = {
 				"Darker",
                 "Dark Blue",
 				"Light",
+                "Therion Inspired",
 				"Aqua",
 				"Amethyst",
 				"Rose",
@@ -6687,7 +6688,42 @@ local ClosureBindings = {
         DialogInputLine = Color3.fromRGB(100, 120, 140),
 			}
 
-		end)() end
+		end)() end,
+        [56] = function()local wax,script,require=ImportGlobals(55)local ImportGlobals return (function(...)return {
+            Name = "Therion Inspired",
+            Accent = Color3.fromRGB(0, 99, 255),
+
+        AcrylicMain = Color3.fromRGB(30, 30, 30),
+            AcrylicBorder = Color3.fromRGB(60, 60, 60),
+            AcrylicGradient = ColorSequence.new(
+                Color3.fromRGB(40, 40, 40),
+                Color3.fromRGB(20, 20, 20)
+            ),
+            AcrylicNoise = 0.95,
+
+            TitleBarLine = Color3.fromRGB(70, 70, 70),
+            Tab = Color3.fromRGB(45, 45, 45),
+
+            Element = Color3.fromRGB(50, 50, 50),
+            ElementBorder = Color3.fromRGB(80, 80, 80),
+            InElementBorder = Color3.fromRGB(30, 30, 30),
+            ElementTransparency = 0.9,
+
+            DropdownFrame = Color3.fromRGB(55, 55, 55),
+            DropdownHolder = Color3.fromRGB(35, 35, 35),
+            DropdownBorder = Color3.fromRGB(80, 80, 80),
+        
+            Dialog = Color3.fromRGB(40, 40, 40),
+            DialogHolder = Color3.fromRGB(30, 30, 30),
+            DialogHolderLine = Color3.fromRGB(25, 25, 25),
+            DialogButton = Color3.fromRGB(50, 50, 50),
+            DialogButtonBorder = Color3.fromRGB(70, 70, 70),
+            DialogBorder = Color3.fromRGB(60, 60, 60),
+            DialogInput = Color3.fromRGB(45, 45, 45),
+            DialogInputLine = Color3.fromRGB(100, 100, 100)
+                }
+    
+            end)() end,
 } -- [RefId] = Closure
 
 -- Holds the actual DOM data
