@@ -6362,7 +6362,7 @@ local ClosureBindings = {
 				"Darker",
                 "Dark Blue",
 				"Light",
-                "Therion Inspired",
+                "Default",
 				"Aqua",
 				"Amethyst",
 				"Rose",
@@ -6690,37 +6690,37 @@ local ClosureBindings = {
 
 		end)() end,
         [56] = function()local wax,script,require=ImportGlobals(55)local ImportGlobals return (function(...)return {
-            Name = "Therion Inspired",
+            Name = "Default",
             Accent = Color3.fromRGB(0, 99, 255),
 
-        AcrylicMain = Color3.fromRGB(30, 30, 30),
-            AcrylicBorder = Color3.fromRGB(60, 60, 60),
+            AcrylicMain = Color3.fromRGB(15, 15, 20),
+            AcrylicBorder = Color3.fromRGB(35, 35, 45),
             AcrylicGradient = ColorSequence.new(
-                Color3.fromRGB(40, 40, 40),
-                Color3.fromRGB(20, 20, 20)
+                Color3.fromRGB(25, 25, 35),
+                Color3.fromRGB(10, 10, 15)
             ),
-            AcrylicNoise = 0.95,
-
-            TitleBarLine = Color3.fromRGB(70, 70, 70),
-            Tab = Color3.fromRGB(45, 45, 45),
-
-            Element = Color3.fromRGB(50, 50, 50),
-            ElementBorder = Color3.fromRGB(80, 80, 80),
-            InElementBorder = Color3.fromRGB(30, 30, 30),
-            ElementTransparency = 0.9,
-
-            DropdownFrame = Color3.fromRGB(55, 55, 55),
-            DropdownHolder = Color3.fromRGB(35, 35, 35),
-            DropdownBorder = Color3.fromRGB(80, 80, 80),
+            AcrylicNoise = 0.9,
         
-            Dialog = Color3.fromRGB(40, 40, 40),
-            DialogHolder = Color3.fromRGB(30, 30, 30),
-            DialogHolderLine = Color3.fromRGB(25, 25, 25),
-            DialogButton = Color3.fromRGB(50, 50, 50),
-            DialogButtonBorder = Color3.fromRGB(70, 70, 70),
-            DialogBorder = Color3.fromRGB(60, 60, 60),
-            DialogInput = Color3.fromRGB(45, 45, 45),
-            DialogInputLine = Color3.fromRGB(100, 100, 100)
+            TitleBarLine = Color3.fromRGB(80, 80, 100),
+            Tab = Color3.fromRGB(35, 35, 45),
+        
+            Element = Color3.fromRGB(40, 40, 50),
+            ElementBorder = Color3.fromRGB(70, 70, 90),
+            InElementBorder = Color3.fromRGB(25, 25, 35),
+            ElementTransparency = 0.8,
+        
+            DropdownFrame = Color3.fromRGB(50, 50, 60),
+            DropdownHolder = Color3.fromRGB(30, 30, 40),
+            DropdownBorder = Color3.fromRGB(75, 75, 95),
+        
+            Dialog = Color3.fromRGB(35, 35, 45),
+            DialogHolder = Color3.fromRGB(25, 25, 30),
+            DialogHolderLine = Color3.fromRGB(20, 20, 25),
+            DialogButton = Color3.fromRGB(45, 45, 55),
+            DialogButtonBorder = Color3.fromRGB(65, 65, 85),
+            DialogBorder = Color3.fromRGB(50, 50, 65),
+            DialogInput = Color3.fromRGB(40, 40, 50),
+            DialogInputLine = Color3.fromRGB(85, 85, 105)
                 }
     
             end)() end,
