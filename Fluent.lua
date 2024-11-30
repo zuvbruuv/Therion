@@ -6962,7 +6962,7 @@ local ObjectTree = {
                         56,
                         2,
                         {
-                            "Therion Inspired"
+                            "Default"
                         }
                     },
 					{
