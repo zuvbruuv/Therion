@@ -1573,7 +1573,7 @@ local ClosureBindings = {
 
 				local Logo = New("ImageLabel", {
 					Name = "Icon",
-					Image = "http://www.roblox.com/asset/?id=114334221214552",
+					Image = "http://www.roblox.com/asset/?id=100420169747016",
 					ImageColor3 = Color3.fromRGB(240, 240, 240),
 					AnchorPoint = Vector2.new(0.5, 0.44999998807907104),
 					BackgroundColor3 = Color3.fromRGB(255, 255, 255),
