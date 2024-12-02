@@ -13,4 +13,14 @@ return {
         ]]
         NoCodes = true
     },
+
+    -- // Heroes Online World
+    [12062942034] = {
+        Codes = {
+            {
+                Code = 'ITSTIME!'
+            },
+        },
+        NoCodes = false
+    },
 }
