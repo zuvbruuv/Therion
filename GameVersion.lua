@@ -3,8 +3,8 @@ return {
     ['HeroesOnlineWorld'] = '(12af09)',
 
     -- // The Vampire Legacies 2
-    ['TVL 2'] = '(bcfa18)',
+    [3837114739] = '(bcfa18)',
 
     -- // Arcane Odyssey
-    ['ArcaneOdyssey'] = '(4cf7a0)'
+    [1180269832] = '(4cf7a0)'
 }
