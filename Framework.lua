@@ -1,5 +1,6 @@
 --[[ Framework.lua
   Main base of Therion
+inspo: https://github.com/neuralls/LutraV2/tree/main
 ]]
 
 local owner, branch = 'zuvbruuv', 'main'
