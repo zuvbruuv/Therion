@@ -95,7 +95,7 @@ return function(config)
         makefolder(gameDir)
     end
 
-    print('[THERION] Framework Loaded')
+    config[game.PlaceId]()
 
     return Therion, Import, gameDir
 end
