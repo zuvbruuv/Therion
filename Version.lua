@@ -1,7 +1,7 @@
 return {
     -- The Vampire Legacies 2
     [3837114739] = {
-        GameVersion = '(1e939d)',
+        GameVersion = '(1085fc)',
         ScriptVersion = 'v1.0.0'
     },
 
