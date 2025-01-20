@@ -6,6 +6,6 @@ return {
 
     -- Attack On Titan Revolution
     [4658598196] = {
-        GameVersion = '(1085fc',
+        GameVersion = '(1085fc)',
     }
 }
