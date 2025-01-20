@@ -1,3 +1,13 @@
+--[[
+
+	Prompt Interface Suite
+	by Sirius
+
+	shlex | Designing + Programming
+    CookieCrumble | Forked UI
+
+]]
+
 local promptRet = {}
 
 local useStudio
@@ -47,8 +57,9 @@ local function open(prompt)
 	tweenService:Create(prompt.Policy.Actions.Primary.Title, TweenInfo.new(0.25, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out), {TextTransparency = 0.2}):Play()
 	tweenService:Create(prompt.Policy.Actions.Primary.Shadow, TweenInfo.new(0.25, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out), {ImageTransparency = 0.7}):Play()
 
-	task.wait(5)
-	
+	-- Reduced wait time for secondary button
+	task.wait(0.15)
+
 	if not fin then
 		tweenService:Create(prompt.Policy.Actions.Secondary.Title, TweenInfo.new(0.25, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out), {TextTransparency = 0.6}):Play()
 		debounce = false
