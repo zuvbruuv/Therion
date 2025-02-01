@@ -148,11 +148,11 @@ if not requestsDisabled then
 			if debugX then warn('Reporting Analytics') end
 			task.spawn(function()
 				local success, reporter = pcall(function()
-					return loadstring(game:HttpGet("https://analytics.sirius.menu/v1/reporter"))()
+					return loadstring(game:HttpGet("https://analytics.sirius.menu/v1/reporter", true))()
 				end)
 				if success and reporter then
 					pcall(function()
-						reporter.report("0193dbf8-7da1-79de-b399-2c0f68b0a9ad", Release, InterfaceBuild)
+						reporter.report("Rayfield", Release, InterfaceBuild)
 					end)
 				else
 					warn("Failed to load or execute the reporter. \nPlease notify Rayfield developers at sirius.menu/discord.")
@@ -641,7 +641,7 @@ local dragOffsetMobile = 150
 Rayfield.DisplayOrder = 100
 LoadingFrame.Version.Text = Release
 
-
+-- Thanks to Latte Softworks for the Lucide integration for Roblox
 local Icons = useStudio and require(script.Parent.icons) or loadstring(game:HttpGet('https://raw.githubusercontent.com/SiriusSoftwareLtd/Rayfield/refs/heads/main/icons.lua'))()
 
 -- Variables
