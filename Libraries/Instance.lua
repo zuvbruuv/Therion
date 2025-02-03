@@ -1,53 +1,47 @@
-local TweenService = game:GetService('TweenService')
+local TweenService = game:GetService("TweenService")
 
 local Creator = {}
-Creator.__index = Creator
 do
-    function Creator.new()
-        local self = setmetatable({}, Creator)
-        return self
-    end
-
-    function Creator:ApplyTween(Instance, TweenInfoData, Goals)
-        local TweenInfoObj = TweenInfo.new(
-            TweenInfoData.Time or 1,
-            TweenInfoData.EasingStyle or Enum.EasingStyle.Linear,
-            TweenInfoData.EasingDirection or Enum.EasingDirection.Out,
-            TweenInfoData.RepeatCount or 0,
-            TweenInfoData.Reverses or false,
-            TweenInfoData.DelayTime or 0
+    function Creator:Tween(object, tweenData, goals)
+        local TweenInfo = TweenInfo.new(
+            tweenData.Time or 1,
+            tweenData.EasingStyle or Enum.EasingStyle.Linear,
+            tweenData.EasingDirection or Enum.EasingDirection.Out,
+            tweenData.RepeatCount or 0,
+            tweenData.Reverses or false,
+            tweenData.DelayTime or 0
         )
 
-        local Tween = TweenService:Create(Instance, TweenInfoObj, Goals)
+        local Tween = TweenService:Create(object, TweenInfo, goals)
         Tween:Play()
         return Tween
     end
 
-    function Creator.CreateInstance(self, ClassName, Props)
-        local Instance = Instance.new(ClassName)
+    function Creator:Create(class, properties)
+        local Instance = Instance.new(class)
 
-        for Property, Value in pairs(Props) do
-            if Property ~= 'Parent' and Property ~= 'Children' and Property ~= 'Tween' then
-                Instance[Property] = Value
+        for property, value in properties do
+            if property ~= "Parent" and property ~= "Children" and property ~= "Tween" then
+                Instance[property] = value
             end
         end
 
-        if Props.Tween then
-            self:ApplyTween(Instance, Props.Tween, Props.Tween.Goals or {})
+        if properties.Tween then
+            self:Tween(Instance, properties.Tween, properties.Tween.Goals or {})
         end
 
-        if Props.Children then
-            for _, ChildData in pairs(Props.Children) do
-                local ChildClassName = ChildData[1]
-                local ChildProps = ChildData[2]
+        if properties.Children then
+            for _, childData in properties.Children do
+                local ChildClass = childData[1]
+                local ChildProperties = childData[2]
 
-                local ChildInstance = Creator.CreateInstance(Creator, ChildClassName, ChildProps)
-                ChildInstance.Parent = Instance
+                local ChildObject = self:Create(ChildClass, ChildProperties)
+                ChildObject.Parent = Instance
             end
         end
 
-        if Props.Parent then
-            Instance.Parent = Props.Parent
+        if properties.Parent then
+            Instance.Parent = properties.Parent
         end
 
         return Instance
