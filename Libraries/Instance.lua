@@ -1,7 +1,5 @@
--- // Services
 local TweenService = game:GetService('TweenService')
 
--- // Creator Class
 local Creator = {}
 Creator.__index = Creator
 do
@@ -56,5 +54,4 @@ do
     end
 end
 
--- // Return
 return Creator
