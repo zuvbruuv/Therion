@@ -3606,7 +3606,21 @@ function RayfieldLibrary:LoadConfiguration()
 	globalLoaded = true
 end
 
-
+function RayfieldLibrary:Prompt(title, message, confirmText, cancelText, callback)
+    prompt.create(
+        title,
+        message,
+        confirmText,
+        cancelText,
+        function(result)
+            if callback and type(callback) == "function" then
+                callback(result)
+            else
+                print("Default callback executed with result:", result)
+            end
+        end
+    )
+end
 
 if useStudio then
 	-- run w/ studio
