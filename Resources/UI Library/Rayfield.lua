@@ -3607,7 +3607,7 @@ function RayfieldLibrary:LoadConfiguration()
 end
 
 function RayfieldLibrary:Prompt(title, message, confirmText, cancelText, callback)
-    prompt.create(
+    return prompt.create(
         title,
         message,
         confirmText,
