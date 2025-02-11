@@ -1572,7 +1572,7 @@ local ClosureBindings = {
 
 				local Logo = New("ImageLabel", {
 					Name = "Icon",
-					Image = "rbxassetid://127061599515072",
+					Image = "rbxassetid://120894529206971",
 					ImageColor3 = Color3.fromRGB(240, 240, 240),
 					AnchorPoint = Vector2.new(0.5, 0.5),
 					BackgroundColor3 = Color3.fromRGB(255, 255, 255),
