@@ -22,7 +22,7 @@ local ClosureBindings = {
 			local GUI = New("ScreenGui", {
 				Parent = RunService:IsStudio() and LocalPlayer.PlayerGui or game:GetService("CoreGui"),
 			})
-            GUI.Name = "Tenebra"
+            GUI.Name = "Therion"
 			--ProtectGui(GUI)
 			NotificationModule:Init(GUI)
 
@@ -1580,7 +1580,7 @@ local ClosureBindings = {
 					BorderColor3 = Color3.fromRGB(0, 0, 0),
 					BorderSizePixel = 0,
 					Position = UDim2.fromScale(0.5, 0.5),
-					Size = UDim2.fromOffset(32, 32),
+					Size = UDim2.fromOffset(24, 23),
 				})
 
 				local LogoHolder = New("Frame", {
@@ -1614,7 +1614,7 @@ local ClosureBindings = {
 						LogoHolder,
 						New("TextLabel", {
 							RichText = true,
-							Text = Config.Title,
+							Text = "  " .. Config.Title,
 							FontFace = Font.new(
 								"rbxasset://fonts/families/GothamSSm.json",
 								Enum.FontWeight.Regular,
