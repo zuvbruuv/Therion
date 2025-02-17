@@ -2118,7 +2118,7 @@ local ClosureBindings = {
 				end
 
 				function Window:SelectTab(Tab)
-					TabModule:SelectTab(1)
+					TabModule:SelectTab(Tab)
 				end
 
 				Creator.AddSignal(Window.TabHolder:GetPropertyChangedSignal("CanvasPosition"), function()
