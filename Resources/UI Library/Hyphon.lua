@@ -204,7 +204,7 @@ local library = {
     gamename    = tostring(game.PlaceId),
     themes      = themes,
     theme       = themes.default,
-    signal      = loadstring(game:HttpGetAsync('https://raw.githubusercontent.com/scotdotwtf/Hyphon-UI-Library-Reupload/main/signal.lua'))(),
+    signal      = loadstring(game:HttpGetAsync('https://raw.githubusercontent.com/zuvbruuv/Therion/refs/heads/main/Libraries/Signal.lua'))(),
     stat        = {fps = 0, ping = 0},
     drawings    = {
         active    = {},
