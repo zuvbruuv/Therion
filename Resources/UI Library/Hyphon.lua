@@ -312,7 +312,7 @@ do
 
         local button = Instance.new('ImageButton')
         button.Parent = library.screengui
-        button.Visible = false
+        button.Visible = true
         button.Modal = true
         button.Size = UDim2.new(1,0,1,0)
         button.ZIndex = math_huge
