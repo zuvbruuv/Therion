@@ -312,7 +312,7 @@ do
 
         local button = Instance.new('ImageButton')
         button.Parent = library.screengui
-        button.Visible = true
+        button.Visible = false
         button.Modal = true
         button.Size = UDim2.new(1,0,1,0)
         button.ZIndex = math_huge
@@ -2416,48 +2416,40 @@ do
             if menu.dragging then
                 return
             end
-
+        
             local drag_position_start = menu.objects.background.AbsolutePosition
             local mouse_position_start = inputservice:GetMouseLocation()
             local start_relative_pos = mouse_position_start - drag_position_start
-            local drag_position = mouse_position_start - start_relative_pos
-
-            local drag_object = library:create('rect', {
-                Size = udim2_offset(menu.objects.outline_outer_2.AbsoluteSize.X, menu.objects.outline_outer_2.AbsoluteSize.Y),
-                Position = udim2_offset(drag_position.X - 9, drag_position.Y - 23),
-                Color = color3_new(1,1,1),
-                Filled = false,
-                Thickness = 1,
-                Transparency = 0,
-                ZIndex = 100,
-            })
-
+        
             local inputchanged; inputchanged = library:connection(inputservice.InputChanged, function(input)
                 if input.UserInputType == Enum.UserInputType.MouseMovement then
                     local position = inputservice:GetMouseLocation() - start_relative_pos
-                    drag_position = vector2_new(math_clamp(position.X, 9, (camera.ViewportSize.X + 9) - menu.objects.outline_outer_2.AbsoluteSize.X), math_clamp(position.Y, 23, (camera.ViewportSize.Y + 23) - menu.objects.outline_outer_2.AbsoluteSize.Y))
-                    drag_object.Position = udim2_offset(drag_position.X - 9, drag_position.Y - 23)
+                    local clamped_position = vector2_new(
+                        math_clamp(position.X, 9, (camera.ViewportSize.X - menu.objects.outline_outer_2.AbsoluteSize.X) - 9),
+                        math_clamp(position.Y, 23, (camera.ViewportSize.Y - menu.objects.outline_outer_2.AbsoluteSize.Y) - 23)
+                    )
+        
+                    menu.objects.background.Position = udim2_offset(clamped_position.X, clamped_position.Y)
                 end
             end)
-
+        
             local inputended; inputended = library:connection(inputservice.InputEnded, function(input)
                 if input.UserInputType == Enum.UserInputType.MouseButton1 then
                     inputchanged:Disconnect()
                     inputended:Disconnect()
-
-                    utility:tween(menu.objects.background, 'Position', udim2_offset(drag_position.X, drag_position.Y), 0.15, Enum.EasingStyle.Quad)
+        
+                    local final_position = menu.objects.background.Position
+                    utility:tween(menu.objects.background, 'Position', final_position, 0.15, Enum.EasingStyle.Quad)
                     utility:tween(menu.objects.drag_fade, 'Transparency', 0, 0.075)
-                    utility:tween(drag_object, 'Transparency', 0, 0.075).Completed:Wait()
-                    drag_object:Remove()
+        
                     menu.dragging = false
-
                 end
             end)
-
+        
             menu.dragging = true
-            utility:tween(drag_object, 'Transparency', 1, 0.075)
-            utility:tween(menu.objects.drag_fade, 'Transparency', 0.2, 0.075).Completed:Wait()
+            utility:tween(menu.objects.drag_fade, 'Transparency', 0.2, 0.075)
         end)
+        
 
         return menu
     end, {
@@ -3535,4 +3527,5 @@ end
 
 library.has_init = true
 getgenv().library = library
+
 return library
