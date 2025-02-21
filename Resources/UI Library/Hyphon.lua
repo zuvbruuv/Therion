@@ -3538,7 +3538,7 @@ do
     library:define("watermark", function(properties)
         local watermark = {}
         watermark.lastupdate = 0
-        watermark.enabled = false
+        watermark.enabled = properties.enabled or false
         watermark.objects = {}
         watermark.text = properties.text
             or {
