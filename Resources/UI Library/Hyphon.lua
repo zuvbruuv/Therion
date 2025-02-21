@@ -3446,7 +3446,7 @@ library.dropdown.objects.border_inner = library:create('outline', library.dropdo
 library.dropdown.objects.border_outer = library:create('outline', library.dropdown.objects.border_inner, {Theme = {['Color'] = 'Border'}})
 
 function library:create_settings_tab(menu)
-    local tab = menu:tab({text = 'config', order = 999})
+    local tab = menu:tab({text = 'settings', order = 999})
     local settings_main = tab:section({text = 'main', side = 1})
     local settings_config = tab:section({text = 'config', side = 2})
 
