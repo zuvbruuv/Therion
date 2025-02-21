@@ -121,7 +121,7 @@ end
 
 local themes = {
     ['default'] = {
-        ['Accent']              = Color3.fromRGB(77, 160, 255),
+        ['Accent']              = Color3.fromRGB(170, 242, 254),
         ['Background']          = Color3.fromRGB(15,15,20),
         ['Border']              = Color3.fromRGB(0,0,0),
         ['Border 1']            = Color3.fromRGB(10,10,15),
@@ -188,6 +188,7 @@ local http            = game:GetService('HttpService')
 local stats           = game:GetService('Stats')
 local camera          = workspace.CurrentCamera
 local worldtoviewport = camera.WorldToViewportPoint
+
 local decode          = (syn and syn.crypt.base64.decode) or (crypt and crypt.base64decode) or base64_decode;
 
 local library = {
