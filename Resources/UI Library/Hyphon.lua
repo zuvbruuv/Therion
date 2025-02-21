@@ -3535,10 +3535,11 @@ do
     end)
 
     -- watermark
-    library:define("watermark", function(properties)
-        local watermark = {}
+    library:define("watermark", function(meta, properties)
+        local watermark = setmetatable({}, meta)
+        properties = properties or {}
         watermark.lastupdate = 0
-        watermark.enabled = properties.enabled
+        watermark.enabled = properties.enabled or false
         watermark.objects = {}
         watermark.text = properties.text
             or {
