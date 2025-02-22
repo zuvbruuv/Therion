@@ -1443,7 +1443,7 @@ do
             }, "Image")
 
             if properties.tooltip then
-                library:add_tooltip(toggle.objects.container, properties.tooltip)
+                library:add_tooltip(button.objects.container, properties.tooltip)
             end
 
             library:connection(button.objects.container.MouseButton1Down, function()
@@ -1547,7 +1547,7 @@ do
             }, "Image")
 
             if properties.tooltip then
-                library:add_tooltip(toggle.objects.container, properties.tooltip)
+                library:add_tooltip(slider.objects.container, properties.tooltip)
             end
 
             library:connection(slider.objects.container.MouseButton1Down, function()
@@ -1768,7 +1768,7 @@ do
             })
 
             if properties.tooltip then
-                library:add_tooltip(toggle.objects.container, properties.tooltip)
+                library:add_tooltip(textbox.objects.container, properties.tooltip)
             end
 
             library:connection(textbox.objects.container.MouseButton1Down, function()
