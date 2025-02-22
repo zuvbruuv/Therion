@@ -1,7 +1,7 @@
 --[[
     /------------ [ octohook.xyz ui library ] ------------\
     | fully by liamm#0223 (561301972293255180)            |
-    | last modified 12/17/2022                            |
+    | last modified 02/22/2025 by @zuvbruv                |
     | if used, give credit.                               |
     |                                                     |
     \-----------------------------------------------------/
@@ -1093,6 +1093,47 @@ do
         self.parent:update_options()
     end
 
+    function library:add_tooltip(element, text)
+        local tooltip = {}
+
+        tooltip.background = library:create("rect", {
+            Size = udim2_new(0, 200, 0, 40),
+            Position = udim2_new(0, 0, 0, 0),
+            Visible = false,
+            Theme = { ["Color"] = "Option Background" },
+            ZIndex = 100,
+        })
+
+        tooltip.text = library:create("text", {
+            Position = udim2_new(0, 5, 0, 5),
+            Theme = { ["Color"] = "Primary Text" },
+            Parent = tooltip.background,
+            ZIndex = 101,
+        })
+        local tooltip_bg = tooltip.background
+
+        for i, color in ipairs({ "Border 1", "Border 2", "Border 1" }) do
+            tooltip["border_" .. i] = library:create("outline", tooltip_bg, { Theme = { ["Color"] = color } })
+            tooltip_bg = tooltip["border_" .. i]
+        end
+
+        library:connection(inputservice.InputChanged, function(input)
+            if tooltip.background.Visible and input.UserInputType == Enum.UserInputType.MouseMovement then
+                tooltip.background.Position = udim2_new(0, input.Position.X + 15, 0, input.Position.Y + 15)
+            end
+        end)
+
+        library:connection(element.MouseEnter, function()
+            tooltip.text.Text = text
+            tooltip.background.Size = udim2_new(0, tooltip.text.TextBounds.X + 10, 0, tooltip.text.TextBounds.Y + 10)
+            tooltip.background.Visible = true
+        end)
+
+        library:connection(element.MouseLeave, function()
+            tooltip.background.Visible = false
+        end)
+    end
+
     -- fov circle
     library.fovcircles = {}
     library.fovcircle = {}
@@ -1310,6 +1351,10 @@ do
                 Parent = toggle.objects.container,
             })
 
+            if properties.tooltip then
+                library:add_tooltip(toggle.objects.container, properties.tooltip)
+            end
+
             toggle.objects.label.Position = udim2_new(0, 17, 0, 1)
             toggle.objects.border_inner =
                 library:create("outline", toggle.objects.background, { ["Theme"] = { ["Color"] = "Border 1" } })
@@ -1396,6 +1441,10 @@ do
                 Data = library.images.gradientp90,
                 Parent = button.objects.background,
             }, "Image")
+
+            if properties.tooltip then
+                library:add_tooltip(toggle.objects.container, properties.tooltip)
+            end
 
             library:connection(button.objects.container.MouseButton1Down, function()
                 button.objects.background.Theme = { ["Color"] = "Accent" }
@@ -1496,6 +1545,10 @@ do
                 Data = library.images.gradientp90,
                 Parent = slider.objects.background,
             }, "Image")
+
+            if properties.tooltip then
+                library:add_tooltip(toggle.objects.container, properties.tooltip)
+            end
 
             library:connection(slider.objects.container.MouseButton1Down, function()
                 slider:update()
@@ -1713,6 +1766,10 @@ do
                 ZIndex = textbox.zindex + 5,
                 Parent = textbox.objects.background,
             })
+
+            if properties.tooltip then
+                library:add_tooltip(toggle.objects.container, properties.tooltip)
+            end
 
             library:connection(textbox.objects.container.MouseButton1Down, function()
                 if not textbox.focued then
@@ -3082,71 +3139,6 @@ do
         })
     end)
 
-    library:define("console", function(default_properties, properties, container)
-        local console = {}
-        console.objects = {}
-
-        console.objects.background = library:create("rect", {
-            Name = "console",
-            Theme = { ["Color"] = "Window Background" },
-            Size = udim2_new(0, 500, 0, 300), -- Adjust size as needed
-            Position = udim2_new(0.5, -250, 0.5, -150), -- Centered on screen
-            Parent = container,
-            ZIndex = 5,
-        })
-
-        console.objects.accent = library:create("rect", {
-            Theme = { ["Color"] = "Accent" },
-            Size = udim2_new(1, 0, 0, 1),
-            Parent = console.objects.background,
-            ZIndex = 6,
-        })
-
-        console.objects.title = library:create("text", {
-            Theme = { ["Color"] = "Primary Text" },
-            Position = udim2_new(0, 10, 0, -6), -- Puts text over the accent line
-            Text = "Console Output",
-            Parent = console.objects.background,
-            ZIndex = 8,
-        })
-
-        console.objects.title_background = library:create("rect", {
-            Theme = { ["Color"] = "Window Background" },
-            Size = udim2_new(0, console.objects.title.TextBounds.X + 10, 0, 3),
-            Position = udim2_new(0, 5, 0, -3), -- Positions just under the text
-            Parent = console.objects.background,
-            ZIndex = 7,
-        })
-
-        console.objects.container = library:create("rect", {
-            Size = udim2_new(1, -10, 1, -25),
-            Position = udim2_new(0, 5, 0, 20),
-            Parent = console.objects.background,
-            Transparency = 0,
-            ZIndex = 6,
-        })
-
-        console.objects.outline_1 = library:create("outline", console.objects.background, {
-            Theme = { ["Color"] = "Border" },
-            Thickness = { 1, 1, 1, 1 },
-        })
-
-        console.objects.outline_2 = library:create("outline", console.objects.outline_1, {
-            Theme = { ["Color"] = "Border 3" },
-            Thickness = { 1, 1, 1, 1 },
-        })
-
-        return setmetatable(console, {
-            __index = function(self, idx)
-                if self[idx] ~= nil then
-                    return self[idx]
-                elseif library.meta.options[idx] ~= nil then
-                    return library.meta.options[idx]
-                end
-            end,
-        })
-    end)
-
     -- option
     library:define("option", function(default_properties, properties, parent, id)
         print(id, properties.flag)
@@ -3549,6 +3541,7 @@ do
                 "999ms",
                 "999 fps",
             }
+        watermark.position = properties.position or "Top Left"
 
         watermark.objects.background = library:create("rect", {
             Position = udim2_new(0, 10, 0, 10),
@@ -3588,11 +3581,32 @@ do
 
                 watermark.objects.label.Text = table_concat(watermark.text, " / ")
                 watermark.objects.background.Size = udim2_new(0, watermark.objects.label.TextBounds.X + 10, 0, 18)
+
+                local sizeX, sizeY =
+                    watermark.objects.background.Size.X.Offset, watermark.objects.background.Size.Y.Offset
+                local textWidth = watermark.objects.label.TextBounds.X
+
+                watermark.objects.background.Position = (watermark.position == "Top Left" and udim2_new(0, 10, 0, 10))
+                    or (watermark.position == "Top Right" and udim2_new(1, -sizeX - 10, 0, 10))
+                    or (watermark.position == "Bottom Left" and udim2_new(0, 10, 1, -sizeY - 10))
+                    or (watermark.position == "Bottom Right" and udim2_new(1, -sizeX - 10, 1, -sizeY - 10))
+                    or (watermark.position == "Center" and udim2_new(0.5, -textWidth / 2, 0, 10))
+                    or (watermark.position == "Custom" and udim2_new(
+                        library.flags.watermark_x / 100,
+                        0,
+                        library.flags.watermark_y / 100,
+                        0
+                    ))
+                    or udim2_new(0, 10, 0, 10)
             end
         end)
 
         return watermark
-    end)
+    end, {
+        set_enabled = function(self, bool)
+            self.enabled = bool
+        end,
+    }, true)
 
     -- indicator
     library:define("indicator", function(meta, properties)
@@ -3956,6 +3970,11 @@ end
 -- // finish
 library.keybind_indicator =
     library:create("indicator", { title = "keybinds", position = udim2_new(0, 10, 0, 450), enabled = false })
+
+library.watermark = library:create(
+    "watermark",
+    { enabled = false, position = "top-left", text = { "therion", "version: v1.0.0", "pro", "999ms", "999 fps" } }
+)
 library.colorpicker = library:create("colorpicker", {})
 library.dropdown = { selected = nil, objects = { values = {} }, connections = {} }
 
@@ -4041,6 +4060,28 @@ function library:create_settings_tab(menu)
             game:GetService("TeleportService"):Teleport(game.PlaceId, game.Players.LocalPlayer)
         end,
     })
+
+    settings_main:separator({ text = "watermark", order = 1, enabled = true })
+
+    settings_main:toggle({
+        text = "enabled ",
+        flag = "watermark_enabled",
+        callback = function(bool)
+            library.watermark:set_enabled(bool)
+        end,
+    })
+
+    settings_main:dropdown({
+        text = "position",
+        flag = "watermark_pos",
+        default = "Center",
+        values = { "Center", "Top Left", "Top Right", "Bottom Left", "Bottom Right", "Custom" },
+        callback = function(val)
+            library.watermark.position = val
+        end,
+    })
+    settings_main:slider({ text = "custom x", flag = "watermark_x", suffix = "%", min = 0, max = 100, increment = 0.1 })
+    settings_main:slider({ text = "custom y", flag = "watermark_y", suffix = "%", min = 0, max = 100, increment = 0.1 })
 
     settings_config:dropdown({ text = "config", flag = "configs_selected" })
     settings_config:textbox({ text = "config name", flag = "configs_input" })
@@ -4155,8 +4196,6 @@ function library:create_settings_tab(menu)
         end,
     })
 
-    settings_config:separator({ text = "", order = 1, enabled = true })
-
     settings_config:button({
         text = "set auto-load",
         confirm = true,
@@ -4195,10 +4234,10 @@ function library:create_settings_tab(menu)
         text = "apply theme",
         confirm = true,
         callback = function()
-            local selected = flags.selected_theme
-            if library.themes[selected] then
-                library:set_theme(selected)
-                library:notification(("applied theme: %s"):format(selected), 5, color3_new(0.35, 1, 0.35))
+            local selected_theme = flags.selected_theme
+            if library.themes[selected_theme] then
+                library:set_theme(selected_theme)
+                library:notification(("applied theme: %s"):format(selected_theme), 5, color3_new(0.35, 1, 0.35))
             else
                 library:notification("invalid theme selected", 5, color3_new(1, 0.35, 0.35))
             end
