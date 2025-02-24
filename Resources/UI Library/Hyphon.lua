@@ -756,9 +756,7 @@ do
                             or utility.table.includes(Enum.UserInputType, value) and Enum.UserInputType[value]
                     )
                 end
-            end, function(err)
-                library:notification(("unable to set '%s' to '%s' [%s]"):format(flag, typeof(value), tostring(err)), 5)
-            end)
+            end
         end
     end
 
