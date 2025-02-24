@@ -346,6 +346,7 @@ local library = {
 	rainbows = {},
 	notifs = {},
 	debugmode = false,
+	unloaded = false,
 	cheatname = "therion",
 	gamename = tostring(game.PlaceId),
 	themes = themes,
@@ -506,6 +507,7 @@ do
 			library.screengui:Destroy()
 		end
 		table_clear(library)
+		library.unloaded = true
 		getgenv().library = nil
 	end
 
