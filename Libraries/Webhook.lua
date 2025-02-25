@@ -1,3 +1,34 @@
+--[[
+
+// -- Webhook Documentation -- \\
+
+-- Load
+local Webhook = loadstring(game:HttpGet('https://raw.githubusercontent.com/zuvbruuv/Therion/refs/heads/main/Libraries/Webhook.lua'))()
+local webhook = Webhook.new(url) 
+
+-- url <string> : The webhook URL
+
+// -- Send Message -- \\
+
+local message_id = webhook:Send(content, embed)
+
+-- content <string?> : (Optional) The message content, set to nil if not used
+-- embed <table?> : (Optional) A table containing embed data, set to nil if not used
+
+// -- Edit Message -- \\
+
+webhook:Edit(message_id, content, embed)
+
+-- message_id <string> : The ID of the message to edit
+-- content <string?> : (Optional) The new message content, set to nil if not changing
+-- embed <table?> : (Optional) A table containing embed data, set to nil if not changing
+
+// -- Delete Message -- \\
+
+webhook:Delete(message_id)
+
+]]
+
 local HttpService = game:GetService("HttpService")
 
 local Webhook = {}
