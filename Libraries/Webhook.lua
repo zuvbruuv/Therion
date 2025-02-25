@@ -33,10 +33,11 @@ local HttpService = game:GetService("HttpService")
 local Webhook = {}
 Webhook.__index = Webhook
 
-function Webhook.new(Url)
+function Webhook.new(Url, Avatar)
     local self = setmetatable({}, Webhook)
     self.Url = Url:match("(.+)%?") or Url
     self.Id, self.Token = self.Url:match("webhooks/(%d+)/([%w-_]+)")
+    self.Avatar = Avatar or nil 
     
     return self
 end
@@ -54,7 +55,8 @@ end
 
 function Webhook:Send(Content, Embed)
     local Res = Request(self.Url .. "?wait=true", "POST", {
-        content = Content or nil,
+        avatar_url = self.Avatar,
+        content = Content,
         embeds = Embed and {Embed} or nil
     })
     
@@ -69,7 +71,8 @@ end
 
 function Webhook:Edit(MessageId, Content, Embed)
     local Res = Request(self.Url .. "/messages/" .. MessageId, "PATCH", {
-        content = Content or nil,
+        avatar_url = self.Avatar,
+        content = Content,
         embeds = Embed and {Embed} or nil
     })
     
