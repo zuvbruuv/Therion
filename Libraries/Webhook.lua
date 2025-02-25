@@ -3,9 +3,10 @@
 // -- Webhook Documentation -- \\
 
 local Webhook = loadstring(game:HttpGet('https://raw.githubusercontent.com/zuvbruuv/Therion/refs/heads/main/Libraries/Webhook.lua'))()
-local webhook = Webhook.new(url) 
+local webhook = Webhook.new(url, avatar_url) 
 
 -- url <string> : The webhook URL
+-- avatar_url <string?> : (Optional) Avatar URL for webhook messages
 
 // -- Send Message -- \\
 
