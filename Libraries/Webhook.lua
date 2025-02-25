@@ -3,10 +3,11 @@
 // -- Webhook Documentation -- \\
 
 local Webhook = loadstring(game:HttpGet('https://raw.githubusercontent.com/zuvbruuv/Therion/refs/heads/main/Libraries/Webhook.lua'))()
-local webhook = Webhook.new(url, avatar_url) 
+local webhook = Webhook.new(url, username, avatar_url) 
 
 -- url <string> : The webhook URL
--- avatar_url <string?> : (Optional) Avatar URL for webhook messages
+-- username <string?> : (Optional) Username for your webhook, set to nil if not used
+-- avatar_url <string?> : (Optional) Avatar for your webhook, set to nil if not used
 
 // -- Send Message -- \\
 
@@ -34,11 +35,12 @@ local HttpService = game:GetService("HttpService")
 local Webhook = {}
 Webhook.__index = Webhook
 
-function Webhook.new(Url, Avatar)
+function Webhook.new(Url, Username, Avatar)
     local self = setmetatable({}, Webhook)
     self.Url = Url:match("(.+)%?") or Url
     self.Id, self.Token = self.Url:match("webhooks/(%d+)/([%w-_]+)")
-    self.Avatar = Avatar or nil 
+    self.Username = Username
+    self.Avatar = Avatar
     
     return self
 end
@@ -56,6 +58,7 @@ end
 
 function Webhook:Send(Content, Embed)
     local Res = Request(self.Url .. "?wait=true", "POST", {
+        username = self.Username,
         avatar_url = self.Avatar,
         content = Content,
         embeds = Embed and {Embed} or nil
@@ -72,6 +75,7 @@ end
 
 function Webhook:Edit(MessageId, Content, Embed)
     local Res = Request(self.Url .. "/messages/" .. MessageId, "PATCH", {
+        username = self.Username,
         avatar_url = self.Avatar,
         content = Content,
         embeds = Embed and {Embed} or nil
