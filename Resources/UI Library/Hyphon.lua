@@ -4033,8 +4033,8 @@ function library:create_settings_tab(menu)
 	})
 
 	settings_main:toggle({
-		text = "connect to ws",
-	        default = true,
+		text = "connect to websocket",
+	        enabled = true,
 		flag = "connect_ws",
 		tooltip = "Enables integration with our Discord bot to view your active session.\n\nTo disable this feature, turn it off and rejoin the game."
 	})
