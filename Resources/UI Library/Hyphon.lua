@@ -4032,6 +4032,13 @@ function library:create_settings_tab(menu)
 		end,
 	})
 
+	settings_main:toggle({
+		text = "connect to ws",
+		flag = "connect_ws",
+		confirm = true,
+		tooltip = "Allows you to use our Discord bot to view your active session"
+	})
+
 	settings_main:button({
 		text = "join discord",
 		callback = function()
