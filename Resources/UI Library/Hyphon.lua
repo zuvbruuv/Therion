@@ -4034,9 +4034,9 @@ function library:create_settings_tab(menu)
 
 	settings_main:toggle({
 		text = "connect to ws",
+	        default = true,
 		flag = "connect_ws",
-		confirm = true,
-		tooltip = "Allows you to use our Discord bot to view your active session"
+		tooltip = "Enables integration with our Discord bot to view your active session.\n\nTo disable this feature, turn it off and rejoin the game."
 	})
 
 	settings_main:button({
