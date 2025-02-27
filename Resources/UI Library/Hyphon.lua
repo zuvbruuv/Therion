@@ -4267,7 +4267,6 @@ function library:create_settings_tab(menu)
 			local config = readfile(autoLoad)
 			if config and #config > 0 then
 				library:load_config(config)
-				library:notification(("Auto-loaded config '%s'"):format(config), 5, color3_new(0.35, 1, 0.35))
 			end
 		end
 	end)
