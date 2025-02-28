@@ -4032,13 +4032,6 @@ function library:create_settings_tab(menu)
 		end,
 	})
 
-	settings_main:toggle({
-		text = "connect to websocket",
-	        enabled = true,
-		flag = "connect_ws",
-		tooltip = "Enables integration with our Discord bot to view your active session.\n\nTo disable this feature, turn it off and rejoin the game."
-	})
-
 	settings_main:button({
 		text = "join discord",
 		callback = function()
