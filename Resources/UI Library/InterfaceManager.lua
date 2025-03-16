@@ -36,7 +36,7 @@ function InterfaceBuilder:BuildInterfaceSection(Tab)
 	local MinimizeUI = Section:AddKeybind("MinimizeUI", {
 		Title = "Minimize Bind",
 		Description = "The key which you must press to minimize the window",
-		Default = self.Library.MinimizeKey.Name
+		Default = self.Library.MinimizeKey.Name,
 	})
 	MinimizeUI:OnChanged(function()
 		self.Library.MinimizeKey = Enum.KeyCode[MinimizeUI.Value]
