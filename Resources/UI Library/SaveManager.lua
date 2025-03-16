@@ -1,6 +1,6 @@
 local httpService = game:GetService("HttpService")
 
-local SaveManager = { Options = {} }
+local SaveManager = { Options = {}, Game = tostring(game.GameId) }
 do
 	SaveManager.Folder = "TherionSettings"
 	SaveManager.Ignore = {}
@@ -27,7 +27,7 @@ do
 		},
 		Dropdown = {
 			Save = function(idx, object)
-				return { type = "Dropdown", idx = idx, value = object.Value, mutli = object.Multi }
+				return { type = "Dropdown", idx = idx, value = object.Value, multi = object.Multi }
 			end,
 			Load = function(idx, data)
 				if SaveManager.Options[idx] then
@@ -65,7 +65,6 @@ do
 				end
 			end,
 		},
-
 		Input = {
 			Save = function(idx, object)
 				return { type = "Input", idx = idx, text = object.Value }
@@ -94,7 +93,7 @@ do
 			return false, "no config file is selected"
 		end
 
-		local fullPath = self.Folder .. "/settings/" .. name .. ".json"
+		local fullPath = self.Folder .. "/" .. self.Game .. "/settings/" .. name .. ".json"
 
 		local data = {
 			objects = {},
@@ -124,14 +123,14 @@ do
 			return false, "no config file is selected"
 		end
 
-		local fullPath = self.Folder .. "/settings/" .. name .. ".json"
+		local fullPath = self.Folder .. "/" .. self.Game .. "/settings/" .. name .. ".json"
 		if isfile(fullPath) then
 			delfile(fullPath)
 
-			if isfile(self.Folder .. "/settings/autoload.txt") then
-				local autoloadPath = readfile(self.Folder .. "/settings/autoload.txt")
+			if isfile(self.Folder .. "/" .. self.Game .. "/settings/autoload.txt") then
+				local autoloadPath = readfile(self.Folder .. "/" .. self.Game .. "/settings/autoload.txt")
 				if autoloadPath == name then
-					delfile(self.Folder .. "/settings/autoload.txt")
+					delfile(self.Folder .. "/" .. self.Game .. "/settings/autoload.txt")
 					return true, "autoload"
 				end
 			end
@@ -147,7 +146,7 @@ do
 			return false, "no config file is selected"
 		end
 
-		local file = self.Folder .. "/settings/" .. name .. ".json"
+		local file = self.Folder .. "/" .. self.Game .. "/settings/" .. name .. ".json"
 		if not isfile(file) then
 			return false, "invalid file"
 		end
@@ -182,7 +181,8 @@ do
 	function SaveManager:BuildFolderTree()
 		local paths = {
 			self.Folder,
-			self.Folder .. "/settings",
+			self.Folder .. "/" .. self.Game,
+			self.Folder .. "/" .. self.Game .. "/settings",
 		}
 
 		for i = 1, #paths do
@@ -194,7 +194,7 @@ do
 	end
 
 	function SaveManager:RefreshConfigList()
-		local list = listfiles(self.Folder .. "/settings")
+		local list = listfiles(self.Folder .. "/" .. self.Game .. "/settings")
 
 		local out = {}
 		for i = 1, #list do
@@ -227,8 +227,8 @@ do
 	end
 
 	function SaveManager:LoadAutoloadConfig()
-		if isfile(self.Folder .. "/settings/autoload.txt") then
-			local name = readfile(self.Folder .. "/settings/autoload.txt")
+		if isfile(self.Folder .. "/" .. self.Game .. "/settings/autoload.txt") then
+			local name = readfile(self.Folder .. "/" .. self.Game .. "/settings/autoload.txt")
 
 			local success, err = self:Load(name)
 			if not success then
@@ -236,7 +236,7 @@ do
 					Title = "Configuration Error",
 					Description = "Failed to load startup config: " .. err,
 					Duration = 7,
-                    Type = "error",
+					Type = "error",
 				})
 				return
 			end
@@ -245,7 +245,7 @@ do
 				Title = "Configuration Loaded",
 				Description = string.format("Successfully loaded startup config: %q", name),
 				Duration = 7,
-                Type = "success",
+				Type = "success",
 			})
 		end
 	end
@@ -289,7 +289,7 @@ do
 						Title = "Configuration Error",
 						Description = "Failed to load config: " .. err,
 						Duration = 7,
-                        Type = "error",
+						Type = "error",
 					})
 					return
 				end
@@ -298,7 +298,7 @@ do
 					Title = "Configuration Loaded",
 					Description = string.format("Successfully loaded config %q", name),
 					Duration = 7,
-                    Type = "success",
+					Type = "success",
 				})
 				ConfigStatus:SetDescription(string.format("Current config: %s", name))
 			end,
@@ -358,7 +358,7 @@ do
 						Title = "Configuration Error",
 						Description = "Failed to update config: " .. err,
 						Duration = 7,
-                        Type = "error",
+						Type = "error",
 					})
 					return
 				end
@@ -367,12 +367,12 @@ do
 					Title = "Configuration Updated",
 					Description = string.format("Successfully updated config: %q", name),
 					Duration = 7,
-                    Type = "success",
+					Type = "success",
 				})
 			end,
 		})
 
-        local section3 = tab:AddSection({ Title = "CREATE NEW CONFIG" })
+		local section3 = tab:AddSection({ Title = "CREATE NEW CONFIG" })
 
 		-- New Config Creation
 		section3:AddInput("SaveManager_ConfigName", {
@@ -437,20 +437,20 @@ do
 			Type = "default",
 			Callback = function()
 				local name = SaveManager.Options.SaveManager_ConfigList.Value
-				writefile(self.Folder .. "/settings/autoload.txt", name)
+				writefile(self.Folder .. "/" .. self.Game .. "/settings/autoload.txt", name)
 				AutoloadStatus:SetDescription(string.format("Config %q will load automatically", name))
 				self.Library:Notify({
 					Title = "Autoload Set",
 					Description = string.format("Successfully set %q to auto startup", name),
 					Duration = 7,
-                    Type = "success",
+					Type = "success",
 				})
 			end,
 		})
 
 		-- Initialize autoload status
-		if isfile(self.Folder .. "/settings/autoload.txt") then
-			local name = readfile(self.Folder .. "/settings/autoload.txt")
+		if isfile(self.Folder .. "/" .. self.Game .. "/settings/autoload.txt") then
+			local name = readfile(self.Folder .. "/" .. self.Game .. "/settings/autoload.txt")
 			ConfigStatus:SetDescription(string.format("Current config: %s", name))
 			AutoloadStatus:SetDescription(string.format("Config %q will load automatically", name))
 		end
