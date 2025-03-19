@@ -31,11 +31,7 @@ do
 			end,
 			Load = function(idx, data)
 				if SaveManager.Options[idx] then
-					if data.multi then
-						SaveManager.Options[idx]:SetValues(data.value)
-					else
-						SaveManager.Options[idx]:SetValue(data.value)
-					end
+                    SaveManager.Options[idx]:SetValue(data.value)
 					print("set", idx, data.value)
 				end
 			end,
