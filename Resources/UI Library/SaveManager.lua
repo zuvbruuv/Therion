@@ -31,7 +31,7 @@ do
 			end,
 			Load = function(idx, data)
 				if SaveManager.Options[idx] then
-                    SaveManager.Options[idx]:SetValue(data.value)
+                                        SaveManager.Options[idx]:SetValue(data.value)
 					print("set", idx, data.value)
 				end
 			end,
